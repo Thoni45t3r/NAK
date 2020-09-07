@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+        <!-- ========== Spesifikasi Report ========== -->
+        <report string	= "Report Purchase Request"
+				model	= "purchase.request"
+				auto	= "True"
+				name	= "report_purchase_request"
+				rml		= "nak_purchase_request/report/report_purchase_request.jrxml"
+				id		= "c10i_purchase_request.report_purchase_request"
+                menu    = "False"
+        />
+    </data>
+</odoo>

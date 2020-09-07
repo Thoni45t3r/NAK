@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record model="ir.sequence" id="seq_hr_attendance_type_monthly">
+            <field name="name">Karyawan Bulanan</field>
+            <field name="code">hr.attendance.type.monthly.sequence.number</field>
+            <field name="prefix">%(year)s</field>
+            <field name="padding">4</field>
+            <field eval="True" name="use_date_range"/>
+            <field name="implementation">no_gap</field>
+        </record>
+        <record model="ir.sequence" id="seq_hr_attendance_type_freelance">
+            <field name="name">Karyawan Harian</field>
+            <field name="code">hr.attendance.type.freelance.sequence.number</field>
+            <field name="prefix">20B0</field>
+            <field name="padding">5</field>
+            <field name="implementation">no_gap</field>
+        </record>
+        <record model="ir.sequence" id="seq_hr_attendance_type_pkwt">
+            <field name="name">Karyawan PKWT</field>
+            <field name="code">hr.attendance.type.pkwt.sequence.number</field>
+            <field name="prefix">20P0</field>
+            <field name="padding">5</field>
+            <field name="implementation">no_gap</field>
+        </record>
+    </data>
+</odoo>

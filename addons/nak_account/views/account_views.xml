@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="nak_account_view_account_invoice_form_inherited" model="ir.ui.view">
+            <field name="name">nak.account.view.account.invoice.form.inherited</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="c10i_account.c10i_view_account_invoice_form_inherited" />
+            <field name="arch" type="xml">
+                <button name="print_report_invoice" position="replace"/>
+            </field>
+        </record>
+
+        <record id="nak_account_view_account_invoice_supplier_form_inherited" model="ir.ui.view">
+            <field name="name">nak.account.view.account.invoice.form.inherited</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="c10i_account.c10i_view_account_invoice_supplier_form_inherited" />
+            <field name="arch" type="xml">
+                <button name="print_report_invoice" position="replace"/>
+            </field>
+        </record>
+
+        <record id="account_payment_form_view" model="ir.ui.view">
+            <field name="name">view.account.payment.form</field>
+            <field name="model">account.payment</field>
+		    <field name="inherit_id" ref="c10i_account.c10i_view_account_payment_form"/>
+		    <field name="arch" type="xml">
+                <button name="create_report" position="after">
+                    <button name="create_report_ho" string="Print For HO" icon="fa-print" type="object" groups="nak_account.group_ho_can_print_cash_bank"/>
+                </button>
+                <xpath expr="//field[@name='payment_adm']" position="after">
+                    <field name="check_number"/>
+                    <field name="check_date"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+		        	<attribute name="attrs">{'invisible': [('payment_type', 'not in', ('transfer', 'inbound', 'outbound'))], 'readonly': [('state', '!=', 'draft')]}</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="account_voucher_form_view" model="ir.ui.view">
+            <field name="name">view.account.payment.form</field>
+            <field name="model">account.voucher</field>
+		    <field name="inherit_id" ref="c10i_account.view_voucher_form"/>
+		    <field name="arch" type="xml">
+                <button name="create_report" position="after">
+                    <button name="create_report_ho" string="Print For HO" icon="fa-print" type="object" groups="nak_account.group_ho_can_print_cash_bank"/>
+                </button>
+                <xpath expr="//field[@name='account_id']" position="after">
+                    <field name="check_number"/>
+                    <field name="check_date"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- ========== Spesifikasi Report ========== -->
+        <report string	= "Report Payment"
+				model	= "account.payment"
+				auto	= "True"
+				name	= "report_voucher_payment_ho"
+				rml		= "nak_account/report/report_voucher_payment.jrxml"
+				id		= "report_voucher_payment_ho"
+                menu    = "False"
+        />
+
+        <!-- ========== Spesifikasi Report ========== -->
+        <report string	= "Report Voucher"
+				model	= "account.voucher"
+				auto	= "True"
+				name	= "report_voucher_ho"
+				rml		= "nak_account/report/report_voucher.jrxml"
+				id		= "report_voucher_ho"
+                menu    = "False"
+        />
+    </data>
+</odoo>

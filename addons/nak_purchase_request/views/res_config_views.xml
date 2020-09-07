@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_purchase_configuration_nak_purchase_request" model="ir.ui.view">
+            <field name="name">purchase.res.config.nak.purchase.request.view</field>
+            <field name="model">purchase.config.settings</field>
+            <field name="inherit_id" ref="purchase.view_purchase_configuration"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[last()]" position="after">
+                    <group string="Report Purchase Request">
+                        <field name="user_warehouse_pr"/>
+                        <field name="user_qc_pr"/>
+                        <field name="user_director_pr"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

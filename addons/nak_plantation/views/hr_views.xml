@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    	<record id="nak_attendance_type_form" model="ir.ui.view">
+            <field name="name">nak.attendance.type.form</field>
+            <field name="model">hr.attendance.type</field>
+            <field name="inherit_id" ref="c10i_lhm.view_attendance_type_form" />
+            <field name="arch" type="xml">
+            	<field name="type" position="after">
+            		<field name="overtime_base_value" attrs="{'invisible': [('special','=',False)]}" />
+            	</field>
+        	</field>
+		</record>
+	</data>
+</odoo>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Wizard -->
+        <!-- Laporan Produksi -->
+        <record model='ir.ui.view' id='wizard_report_produksi_nakau_view'>
+            <field name="name">wizard.report.produksi.view</field>
+            <field name="model">wizard.report.produksi</field>
+            <field name="inherit_id" ref="c10i_lhm.wizard_report_produksi_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='panen_ids']/tree/field[@name='date']" position="before">
+                    <field name="name"/>
+                </xpath>
+            </field>
+        </record>
+
+        <report string	= "Laporan Panen"
+				model	= "wizard.report.produksi.select"
+				auto	= "True"
+				name	= "report_produksi_panen"
+				rml		= "nak_plantation/report/report_produksi_panen.jrxml"
+				id		= "c10i_lhm.report_produksi_panen"
+        />
+    </data>
+</odoo>
